@@ -14,9 +14,6 @@ if [ $1 -eq 1 ]
 elif [ $1 -eq 2 ]
   then
     target=/home/brosiak/repos-ubuntu/diagnostics/artifacts/Debuggees/SingleFile/DumpLongNameTruncation/bin/Debug/net10.0/linux-x64
-elif [ $1 -eq 3 ]
-  then
-    target=/home/brosiak/repos-ubuntu/diagnostics/artifacts/bin/DumpLongNameTruncation/Debug/net10.0/linux-x64
 fi
 
 echo SRC:$source

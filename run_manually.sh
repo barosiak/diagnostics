@@ -21,14 +21,17 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-if [ $1 -eq 1 ]
+if [ $1 -eq 0 ]
   then
     ./copy_runtime.sh 2
-    /home/brosiak/repos-ubuntu/tom-diagnostics/artifacts/Debuggees/SingleFile/DumpLongNameTruncation/bin/Debug/net10.0/linux-x64/DumpLongNameTruncation
+    /home/brosiak/repos-ubuntu/diagnostics/artifacts/Debuggees/SingleFile/DumpLongNameTruncation/bin/Debug/net10.0/linux-x64/publish/DumpLongNameTruncation
+elif [ $1 -eq 1 ]
+  then
+    ./copy_runtime.sh 2
+    /home/brosiak/repos-ubuntu/diagnostics/artifacts/Debuggees/SingleFile/DumpLongNameTruncation/bin/Debug/net10.0/linux-x64/DumpLongNameTruncation
 elif [ $1 -eq 2 ]
   then
-    ./copy_runtime.sh 3
-    /home/brosiak/repos-ubuntu/tom-diagnostics/artifacts/bin/DumpLongNameTruncation/Debug/net10.0/linux-x64/DumpLongNameTruncation
+    /home/brosiak/repos-ubuntu/diagnostics/artifacts/bin/DumpLongNameTruncation/Debug/net10.0/DumpLongNameTruncation
 fi
 
 echo "Checking for dump files..."
@@ -42,6 +45,5 @@ if [ -n "$DUMP_FILES" ]; then
         echo "  - $(basename "$file") ($SIZE) - $TIMESTAMP"
     done
 else
-    echo "No dump files found in $DUMPS_DIR. The crash may not have triggered dump collection."
-    echo "This can happen with certain exception types that are handled by the runtime."
+    echo "No dump files found in $DUMPS_DIR."
 fi
