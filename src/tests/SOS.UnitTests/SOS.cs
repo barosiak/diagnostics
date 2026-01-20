@@ -144,11 +144,6 @@ public static class SOSTestHelpers
 
         Console.WriteLine($"Running SOS Test: {testName ?? scriptName} Debuggee: {debuggeeName} TestLive: {testLive} TestDump: {testDump} TestTriage: {testTriage} TestMini: {testMini} DumpGenerator: {dumpGenerator}");
 
-        // bool canRun = false;
-        // while (!canRun)
-        // {
-        //     System.Threading.Thread.Sleep(100);
-        // }
         await RunTest(scriptName,
             new SOSRunner.TestInformation
             {
@@ -265,11 +260,6 @@ public class SOS
         {
             throw new SkipTestException("Test only supports CDB and therefore only runs on Windows");
         }
-
-        /*if (config.PublishSingleFile)
-        {
-            throw new SkipTestException("Single file does not support mini dumps");
-        }*/
 
         // The default dumpGenerator, CreateDump, only supports taking dumps at exceptions.
         // DotnetDump could support taking a dump at a breakpoint, but this SOS test framework doesn't currently support this operation.

@@ -92,8 +92,6 @@ public class SOSRunner : IDisposable
             get
             {
                 return _testDump &&
-                    // Only single file dumps on Windows
-                    //(!TestConfiguration.PublishSingleFile || OS.Kind == OSKind.Windows) &&
                     // Generate and test dumps if on OSX or Alpine only if the runtime is 6.0 or greater
                     (!(OS.Kind == OSKind.OSX || OS.IsAlpine) || TestConfiguration.RuntimeFrameworkVersionMajor > 5);
             }
@@ -216,8 +214,6 @@ public class SOSRunner : IDisposable
         TestConfiguration config = information.TestConfiguration;
         DumpGenerator dumpGeneration = information.DumpGenerator;
         string dumpName = null;
-
-        Console.WriteLine($"Creating dump for {information.DebuggeeName} using {dumpGeneration}");
 
         Directory.CreateDirectory(information.DebuggeeDumpOutputRootDir);
 
@@ -1068,13 +1064,6 @@ public class SOSRunner : IDisposable
                 break;
             case NativeDebugger.DotNetDump:
                 // If a single-file app, add the path to runtime so SOS can find DAC/DBI locally.
-                // if (_config.PublishSingleFile)
-                // {
-                //     if (!string.IsNullOrEmpty(runtimeSymbolsPath))
-                //     {
-                //         commands.Add($"setclrpath {runtimeSymbolsPath}");
-                //     }
-                // }
                 if (!string.IsNullOrEmpty(setSymbolServer))
                 {
                     commands.Add($"setsymbolserver {setSymbolServer}");
