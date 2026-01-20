@@ -141,9 +141,6 @@ public static class SOSTestHelpers
         bool testMini = false,
         SOSRunner.DumpGenerator dumpGenerator = SOSRunner.DumpGenerator.CreateDump)
     {
-
-        Console.WriteLine($"Running SOS Test: {testName ?? scriptName} Debuggee: {debuggeeName} TestLive: {testLive} TestDump: {testDump} TestTriage: {testTriage} TestMini: {testMini} DumpGenerator: {dumpGenerator}");
-
         await RunTest(scriptName,
             new SOSRunner.TestInformation
             {
